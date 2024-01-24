@@ -23,8 +23,8 @@ public class FileController {
     @PostMapping(value = "/processDocument", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public @ResponseBody ResponseEntity<?> processDocument(@RequestParam("file") MultipartFile multipart) throws IOException {
 
-        byte[] fileContent = multipart.getBytes();
-        String html = new String(fileContent);
+        String html = new String(multipart.getBytes());
+
         String converted = ixbrlService.convert(html);
 
         return ResponseEntity.ok()
